@@ -5,8 +5,8 @@ def writing_file(file_name):
     file = open(file_name, 'wb')
     key = Fernet.generate_key()
     f = Fernet(key)
-    username= bytes(input("Please enter the username: "), "utf-8") # We need the input as bytes form for the encryption
-    password = bytes(input("Please enter the password: "), 'utf-8')
+    username= input("Please enter the username: ").encode() # We need the input as bytes form for the encryption
+    password = input("Please enter the password: ").encode()
     if len(username) > 0 and len(password) > 0:
         encrypt_username = f.encrypt(username)
         encrypt_password = f.encrypt(password)
