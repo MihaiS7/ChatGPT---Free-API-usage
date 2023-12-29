@@ -4,11 +4,11 @@ from selenium.webdriver.common.by import By
 class Locators():
     """ Selenium locators """
 
-    LOG_IN = (By.XPATH, "//button[contains(@class, 'btn relative btn-primary')]")
+    LOG_IN = (By.XPATH, '//*[@id="__next"]/div[1]/div[2]/div[1]/div/div/button[1]/div')
     EMAIL_ADDRESS = (By.ID, "username")
-    CONTINUE = (By.XPATH, "//button[contains(@class, 'button-login-id')]")
+    CONTINUE = (By.CSS_SELECTOR, "button[value='default']")
     PASSWORD = (By.ID, "password")
-    LOGIN_SUBMIT_BUTTON = (By.XPATH, '/html/body/div/main/section/div/div/div/form/div[3]/button')
+    LOGIN_SUBMIT_BUTTON = (By.XPATH, "//button[@class='c320322a4 c480bc568 c20af198f ce9190a97 _button-login-password']")
     
     ACCEPTING_REQUIREMENTS = (By.XPATH, "//*[@id='radix-:r9:']/div[2]/div[2]/div/button[1]/div")
     FIRST_SECOND_BUTTON = (By.XPATH, "//div[@class='p-4 sm:p-6 sm:pt-4']//button[contains(@class, 'btn relative btn-neutral ml-auto')]")

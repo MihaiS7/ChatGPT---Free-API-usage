@@ -5,16 +5,16 @@ def writing_file(file_name):
     file = open(file_name, 'wb')
     key = Fernet.generate_key()
     f = Fernet(key)
-    username= input("Please enter the username: ").encode() # We need the input as bytes form for the encryption
-    password = input("Please enter the password: ").encode()
+    username= input("Please enter the username: ")
+    password = input("Please enter the password: ")
     if len(username) > 0 and len(password) > 0:
-        encrypt_username = f.encrypt(username)
-        encrypt_password = f.encrypt(password)
+        encrypt_username = f.encrypt(bytes(username, "utf-8")) # We need the input as bytes form for the encryption
+        encrypt_password = f.encrypt(bytes(password, "utf-8"))
         file.writelines([encrypt_username+b"\n", encrypt_password])
     file.close()
     # if you wanna see the decrypted code, just deactivate the below print statement
     # print(f.decrypt(encrypt_username), f.decrypt(encrypt_password))
-    return str(username).decode(), str(password).decode()
+    return username, password
 
 def adding_to_ignore(name_file):
     f = open(".gitignore", 'r+')

@@ -15,24 +15,18 @@ import creating_env_file
 URL = "https://chat.openai.com/auth/login"
 # CHROME_TARGET_VERSION = 114
 
-# Login credentials
-if __name__=='__main__':
-    file_name = "credentials.dev"
-    username, password = creating_env_file.writing_file(file_name=file_name)
-print(username)
-print(password)
 # Initialize the Chrome driver
 driver = uc.Chrome()
 driver.get(URL)
 
 
-def to_login():
+def to_login(username, password):
     print("Your data will be passed in locators for log in. \n")
     login_button = WebDriverWait(driver, 3).until(
         EC.element_to_be_clickable((Locators.LOG_IN))
     )
     login_button.click()
-    time.sleep(5)
+    time.sleep(25)
 
     username_section = driver.find_element(*Locators.EMAIL_ADDRESS)
     username_section.send_keys(username)
@@ -185,13 +179,18 @@ def chat():
         output_queue = []
         iteration +=1
         
-asking_data = print("""Hi, because of the sensitive details,
-      I would like to ask you to add your login credentials
-      here.""")
+# asking_data = print("""Hi, because of the sensitive details,
+#       I would like to ask you to add your login credentials
+#       here.""")
     
-to_login()
-time.sleep(5)
-accept_requirements()
-time.sleep(8)
-chat()
-driver.quit()
+# Login credentials
+if __name__=='__main__':
+    file_name = "credentials.dev"
+    username, password = creating_env_file.writing_file(file_name=file_name)
+
+    to_login(username=username, password=password)
+    time.sleep(5)
+    accept_requirements()
+    time.sleep(8)
+    chat()
+    driver.quit()
