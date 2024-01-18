@@ -12,7 +12,7 @@ def writing_file(file_name):
         encrypt_password = f.encrypt(bytes(password, "utf-8"))
         file.writelines([encrypt_username+b"\n", encrypt_password])
     file.close()
-    # if you wanna see the decrypted code, just deactivate the below print statement
+    # if you want to see the decrypted code, just deactivate the below print statement
     # print(f.decrypt(encrypt_username), f.decrypt(encrypt_password))
     return username, password
 
